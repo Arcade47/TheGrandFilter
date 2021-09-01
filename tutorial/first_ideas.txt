@@ -1,0 +1,13 @@
+Intro:
+"Since ... mankind asked whether there actually is a future."
+
+"Is everything determined?"
+
+...
+
+text:
+"Hello traveller!"
+
+"How many dimensions do you see?"
+
+"How many dimensions are there?"
