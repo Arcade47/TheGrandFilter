@@ -22,16 +22,22 @@ class Terrain {
     constructor() {
         this.coords = this.setup_coords();
     }
-    setup_coords() {
+    setup_coords(time_ind, order) {
         var coords = [];
         for (let yi = 0; yi < terrain_data.length; yi++) {
             for (let xi = 0; xi < terrain_data[yi].length; xi++) {
-                if (terrain_data[yi][xi] == 1) {
-                    coords.push({x: xi, y: yi});
+                for (let zi = 0; zi < terrain_data[yi][xi].length; zi++) {
+                    if (terrain_data[yi][xi] == 1) {
+                        // push the coords depending on order
+                        coords.push({x: xi, y: yi});
+                    }
                 }
             }
         }
         return coords;
+    }
+    update(time_ind) {
+
     }
     render() {
         for (let i = 0; i < this.coords.length; i++) {

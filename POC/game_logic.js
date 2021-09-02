@@ -19,6 +19,9 @@ function update_all() {
     elapsed = endDate - startDate;
 
     if (elapsed > (1000/fps)) {
+        // step forward the index of third dim
+        third_dim_ind = (third_dim_ind + 1)%n_rows;
+        // TODO store the past movements
         //update objects
         player.update();
         // draw functions

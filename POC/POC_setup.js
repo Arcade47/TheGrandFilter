@@ -5,12 +5,16 @@
 - wrapping
 */
 
-// global vars
+// user parameters
 
 var n_rows = 60;
-var n_cols = 80;
-var edge_len = Math.round(Math.min(window.innerWidth, window.innerHeight)/Math.min(n_rows + 10, n_cols + 10));
+var n_cols = n_rows;
 var fps = 10;
+
+// derived and global vars
+
+var edge_len = Math.round(Math.min(window.innerWidth, window.innerHeight)/Math.min(n_rows + 10, n_cols + 10));
+var third_dim_ind = 0;
 
 // setup canvas
 
