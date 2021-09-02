@@ -3,6 +3,12 @@
 --> repeating time space every 6 seconds
 
 
+how many dimension switches?
+	- if just swapped time with 1st or 2nd space dimension:
+		still all 6 possibilities, but fewer items
+	- labelling possibilites:
+		"yxt", "ytx", "xyt", ...
+
 conceptual problems:
 
 A) terrain stays equal in one configuration, but not the others

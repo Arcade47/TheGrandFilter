@@ -14,7 +14,7 @@ var fps = 10;
 // derived and global vars
 
 var edge_len = Math.round(Math.min(window.innerWidth, window.innerHeight)/Math.min(n_rows + 10, n_cols + 10));
-var third_dim_ind = 0;
+var time_dim_ind = 0;
 
 // setup canvas
 
@@ -42,25 +42,4 @@ function draw_rect(pos, color="black") {
     ctx.rect(pos.x*edge_len, pos.y*edge_len, edge_len, edge_len);
     ctx.fillStyle = color;
     ctx.fill();
-}
-
-// event listener functions
-
-function keyup() {}
-function keydown() {}
-
-function keydown(e) {
-
-    if (e.code == "ArrowUp")    player.vel.y = -1;
-    if (e.code == "ArrowDown")  player.vel.y = 1;
-    if (e.code == "ArrowLeft")  player.vel.x = -1;
-    if (e.code == "ArrowRight") player.vel.x = 1;
-}
-
-function keyup(e) {
-    
-    if (e.code == "ArrowUp")    player.vel.y = 0;
-    if (e.code == "ArrowDown")  player.vel.y = 0;
-    if (e.code == "ArrowLeft")  player.vel.x = 0;
-    if (e.code == "ArrowRight") player.vel.x = 0;
 }
