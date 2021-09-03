@@ -31,7 +31,7 @@ class Player {
 
 class Terrain {
     constructor() {
-        this.order = "xty";
+        this.order = orders[order_ind];
         this.dim_switch_active = true; // flag to make constant switching impossible
         this.x_pressed = false;
         this.y_pressed = false;
@@ -46,11 +46,9 @@ class Terrain {
         if (this.order[0] == "t") {
             for (let dim1_i = 0; dim1_i < terrain_3D_data[time_dim_ind].length; dim1_i++) {
                 for (let dim2_i = 0; dim2_i < terrain_3D_data[time_dim_ind][dim1_i].length; dim2_i++) {
-                    if (this.order[1] == "x" && terrain_3D_data[time_dim_ind][dim1_i][dim2_i] == 1) {
-                        coords.push({x: dim1_i, y: dim2_i});
-                    }
-                    if (this.order[1] == "y" && terrain_3D_data[time_dim_ind][dim1_i][dim2_i] == 1) {
-                        coords.push({x: dim2_i, y: dim1_i});
+                    if (terrain_3D_data[time_dim_ind][dim1_i][dim2_i] == 1) {
+                        if (this.order[1] == "x") coords.push({x: dim1_i, y: dim2_i});
+                        if (this.order[1] == "y") coords.push({x: dim2_i, y: dim1_i});
                     }
                 }
             }
@@ -58,11 +56,9 @@ class Terrain {
         else if (this.order[1] == "t") {
             for (let dim1_i = 0; dim1_i < terrain_3D_data.length; dim1_i++) {
                 for (let dim2_i = 0; dim2_i < terrain_3D_data[dim1_i][time_dim_ind].length; dim2_i++) {
-                    if (this.order[0] == "x" && terrain_3D_data[dim1_i][time_dim_ind][dim2_i] == 1) {
-                        coords.push({x: dim1_i, y: dim2_i});
-                    }
-                    if (this.order[0] == "y" && terrain_3D_data[dim1_i][time_dim_ind][dim2_i] == 1) {
-                        coords.push({x: dim2_i, y: dim1_i});
+                    if (terrain_3D_data[dim1_i][time_dim_ind][dim2_i] == 1) {
+                        if (this.order[0] == "x") coords.push({x: dim1_i, y: dim2_i});
+                        if (this.order[0] == "y") coords.push({x: dim2_i, y: dim1_i});
                     }
                 }
             }
@@ -70,31 +66,14 @@ class Terrain {
         else {
             for (let dim1_i = 0; dim1_i < terrain_3D_data.length; dim1_i++) {
                 for (let dim2_i = 0; dim2_i < terrain_3D_data[dim1_i].length; dim2_i++) {
-                    if (this.order[0] == "x" && terrain_3D_data[dim1_i][dim2_i][time_dim_ind] == 1) {
-                        coords.push({x: dim1_i, y: dim2_i});
-                    }
-                    if (this.order[0] == "y" && terrain_3D_data[dim1_i][dim2_i][time_dim_ind] == 1) {
-                        coords.push({x: dim2_i, y: dim1_i});
+                    if (terrain_3D_data[dim1_i][dim2_i][time_dim_ind] == 1) {
+                        if (this.order[0] == "x") coords.push({x: dim1_i, y: dim2_i});
+                        if (this.order[0] == "y") coords.push({x: dim2_i, y: dim1_i});
                     }
                 }
             }
         }
-        console.log(coords.length)
         return coords;
-
-        // old code
-        /*
-        for (let yi = 0; yi < terrain_data.length; yi++) {
-            for (let xi = 0; xi < terrain_data[yi].length; xi++) {
-                for (let zi = 0; zi < terrain_data[yi][xi].length; zi++) {
-                    if (terrain_data[yi][xi][] == 1) {
-                        // push the coords depending on order
-                        coords.push({x: xi, y: yi});
-                    }
-                }
-            }
-        }
-        */
         
     }
     add_coord(coord) {

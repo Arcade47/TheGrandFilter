@@ -1,0 +1,37 @@
+GameJam "The Future"
+
+idea:
+flexibly changing dimensions, making time a space dim and vice versa
+-> does it even make sense?
+
+initial appeal:
+walked distance becomes floor
+kind of drawing in 3D space (if it is 2D physics, e.g. Jump'n'Run)
+maybe also "3D music" (MIDI notes)
+
+time:
+flowing in one direction with event listener each frame
+
+thought exp.:
+normal J'n'R: time axis open/n.d. if not time is not passed
+	if it was already existing --> no freedom
+it follows: time dimension needs to be overwritten by agent
+	there should then be no logical conflicts, if only one agent
+
+gameplay:
+step on one's "time movements"
+all axes have unique effects (gravity|locomotion|time) -> 6 orders
+instead of enemies: --> other players; they can camouflage
+multiplayer?! overwriting other world? -> see a "great filter" in space fim approaching -> find a dim switch item before
+
+goal:
+multiplayer: survive last (benefit: no levels)
+
+story:
+maybe time travelers become great filters
+beginning question: "Does the future exist?" --> yes, but can be overwritten
+
+TODO:
+lots of gameplay tweaking (how many players, items, what starting terrain, what distribution? how big is level?)
+Implementation (JS in Browser? Mobile?)
+Music composition

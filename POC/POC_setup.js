@@ -7,14 +7,17 @@
 
 // user parameters
 
-var n_rows = 60;
+var n_rows = 20;
 var n_cols = n_rows;
 var fps = 10;
 
 // derived and global vars
 
 var edge_len = Math.round(Math.min(window.innerWidth, window.innerHeight)/Math.min(n_rows + 10, n_cols + 10));
-var time_dim_ind = 0;
+var time_dim_ind = 2;
+const orders = ["xyt", "xty", "txy"];
+var order_ind = 0;
+var store_mvmnts = true;
 
 // setup canvas
 

@@ -20,7 +20,7 @@ function update_all() {
 
     if (elapsed > (1000/fps)) {
         // TODO store the past movements
-        terrain.add_coord(player.pos);
+        if (store_mvmnts) terrain.add_coord(player.pos);
         // step forward the index of third dim
         time_dim_ind = (time_dim_ind + 1)%n_rows;
         //update objects
@@ -29,6 +29,12 @@ function update_all() {
         // draw functions
         render_all();
         startDate = Date.now();
+        // update order ind (debug)
+        if (time_dim_ind == n_rows - 1) {
+            order_ind = (order_ind + 1)%orders.length;
+            terrain.order = orders[order_ind];
+            store_mvmnts = false;
+        }
     }
     
 }
