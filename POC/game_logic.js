@@ -20,7 +20,7 @@ function update_all() {
 
     if (elapsed > (1000/fps)) {
         // TODO store the past movements
-        //terrain.add_coord(player.pos);
+        terrain.add_coord(player.pos);
         // step forward the index of third dim
         time_dim_ind = (time_dim_ind + 1)%n_rows;
         //update objects
@@ -39,6 +39,13 @@ function render_all() {
     // draw objects
     player.render();
     terrain.render();
+    // debug info
+    debug_info_display([
+        terrain.order,
+        String(time_dim_ind),
+        "x: " + String(player.pos.x),
+        "y: " + String(player.pos.y)
+    ]);
 }
 
 // event listener functions
@@ -58,7 +65,7 @@ function keydown(e) {
             terrain.dim_switch_active = false;
         }
     }
-    if (e.code == "KeyY") {
+    if (e.code == "KeyZ") {
         terrain.y_pressed = true;
         if (terrain.dim_switch_active) {
             terrain.dim_switch("y");
@@ -77,7 +84,7 @@ function keyup(e) {
 
     // check state of X and Y keys
     if (e.code == "KeyX" && terrain.x_pressed) terrain.x_pressed = false;
-    if (e.code == "KeyY" && terrain.y_pressed) terrain.y_pressed = false;
+    if (e.code == "KeyZ" && terrain.y_pressed) terrain.y_pressed = false;
     // reset terrain switch listener if all keys released
     if (!terrain.x_pressed && !terrain.y_pressed) terrain.dim_switch_active = true;
 

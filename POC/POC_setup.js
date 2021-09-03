@@ -43,3 +43,12 @@ function draw_rect(pos, color="black") {
     ctx.fillStyle = color;
     ctx.fill();
 }
+
+function debug_info_display(ll) {
+    ctx.font = '20px serif';
+    ctx.fillStyle = "black";
+    for (let i = 0; i < ll.length; i++) {
+        const l = ll[i];
+        ctx.fillText(l, 10, (i+1)*20);    
+    }
+}
