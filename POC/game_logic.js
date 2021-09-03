@@ -35,10 +35,19 @@ function update_all() {
 
 function render_all() {
     // refresh
-    refresh_canvas("lightblue");
+    refresh_canvas("lightblue", ctx1);
+    refresh_canvas("lightblue", ctx2);
+    refresh_canvas("lightblue", ctx3);
     // draw objects
-    player.render();
-    terrain.render();
+    terrain.order = "xyt";
+    player.render(ctx1);
+    terrain.render(ctx1);
+    terrain.order = "xty";
+    player.render(ctx2);
+    terrain.render(ctx2);
+    terrain.order = "xyt";
+    player.render(ctx3);
+    terrain.render(ctx3);
     // debug info
     debug_info_display([
         terrain.order,

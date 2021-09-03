@@ -24,8 +24,8 @@ class Player {
     update() {
         this.move();
     }
-    render() {
-        draw_rect(this.pos);
+    render(ctx=ctx1) {
+        draw_rect(this.pos, ctx);
     }
 }
 
@@ -134,10 +134,10 @@ class Terrain {
     update() {
         this.coords = this.setup_coords(); // TODO find a more clever way than read out from 2D every frame ...
     }
-    render() {
+    render(ctx=ctx1) {
         for (let i = 0; i < this.coords.length; i++) {
             const c = this.coords[i];
-            draw_rect(c, "orange");
+            draw_rect(c, "orange", ctx);
         }
     }
 }

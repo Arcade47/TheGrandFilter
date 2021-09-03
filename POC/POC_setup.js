@@ -29,8 +29,8 @@ canvas3.width = edge_len*n_cols;//window.innerWidth;
 canvas3.height = edge_len*n_rows;//window.innerHeight;
 
 var ctx1 = canvas1.getContext("2d");
-var ctx1 = canvas2.getContext("2d");
-var ctx1 = canvas3.getContext("2d");
+var ctx2 = canvas2.getContext("2d");
+var ctx3 = canvas3.getContext("2d");
 
 // setup animation
 
