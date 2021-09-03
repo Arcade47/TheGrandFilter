@@ -44,13 +44,19 @@ class Terrain {
         // hardcoded for now;
         // TODO somehow refactor it if time left (according to javidx9 not necessary)
         if (this.order[0] == "t") {
+            // for (let tdim_i = time_dim_ind; tdim_i >= 0; tdim_i--) {
+            //     const element = array[tdim_i];
+                
+            // }
             for (let dim1_i = 0; dim1_i < terrain_3D_data[time_dim_ind].length; dim1_i++) {
                 for (let dim2_i = 0; dim2_i < terrain_3D_data[time_dim_ind][dim1_i].length; dim2_i++) {
-                    if (this.order[1] == "x" && terrain_3D_data[time_dim_ind][dim1_i][dim2_i] == 1) {
-                        coords.push({x: dim1_i, y: dim2_i});
-                    }
-                    if (this.order[1] == "y" && terrain_3D_data[time_dim_ind][dim1_i][dim2_i] == 1) {
-                        coords.push({x: dim2_i, y: dim1_i});
+                    // check in time dimension until there is a "hit"
+                    for (let tdim_i = time_dim_ind; tdim_i >= 0; tdim_i--) {
+                        if (terrain_3D_data[tdim_i][dim1_i][dim2_i] == 1) {
+                            if (this.order[1] == "x") coords.push({x: dim1_i, y: dim2_i});
+                            if (this.order[1] == "y") coords.push({x: dim2_i, y: dim1_i});
+                            break;
+                        }
                     }
                 }
             }
@@ -58,11 +64,13 @@ class Terrain {
         else if (this.order[1] == "t") {
             for (let dim1_i = 0; dim1_i < terrain_3D_data.length; dim1_i++) {
                 for (let dim2_i = 0; dim2_i < terrain_3D_data[dim1_i][time_dim_ind].length; dim2_i++) {
-                    if (this.order[0] == "x" && terrain_3D_data[dim1_i][time_dim_ind][dim2_i] == 1) {
-                        coords.push({x: dim1_i, y: dim2_i});
-                    }
-                    if (this.order[0] == "y" && terrain_3D_data[dim1_i][time_dim_ind][dim2_i] == 1) {
-                        coords.push({x: dim2_i, y: dim1_i});
+                    // check in time dimension until there is a "hit"
+                    for (let tdim_i = time_dim_ind; tdim_i >= 0; tdim_i--) {
+                        if (terrain_3D_data[dim1_i][tdim_i][dim2_i] == 1) {
+                            if (this.order[0] == "x") coords.push({x: dim1_i, y: dim2_i});
+                            if (this.order[0] == "y") coords.push({x: dim2_i, y: dim1_i});
+                            break;
+                        }
                     }
                 }
             }
@@ -70,16 +78,16 @@ class Terrain {
         else {
             for (let dim1_i = 0; dim1_i < terrain_3D_data.length; dim1_i++) {
                 for (let dim2_i = 0; dim2_i < terrain_3D_data[dim1_i].length; dim2_i++) {
-                    if (this.order[0] == "x" && terrain_3D_data[dim1_i][dim2_i][time_dim_ind] == 1) {
-                        coords.push({x: dim1_i, y: dim2_i});
-                    }
-                    if (this.order[0] == "y" && terrain_3D_data[dim1_i][dim2_i][time_dim_ind] == 1) {
-                        coords.push({x: dim2_i, y: dim1_i});
+                    for (let tdim_i = time_dim_ind; tdim_i >= 0; tdim_i--) {
+                        if (terrain_3D_data[dim1_i][dim2_i][tdim_i] == 1) {
+                            if (this.order[0] == "x") coords.push({x: dim1_i, y: dim2_i});
+                            if (this.order[0] == "y") coords.push({x: dim2_i, y: dim1_i});
+                            break;
+                        }
                     }
                 }
             }
         }
-        console.log(coords.length)
         return coords;
 
         // old code
